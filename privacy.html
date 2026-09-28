@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Loginforce for Salesforce: Privacy Policy</title>
+<style>
+  :root { --bg: #ffffff; --text: #18181b; --muted: #52525b; --line: #e4e4e7; --accent: #2563eb; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #111113; --text: #f4f4f5; --muted: #a1a1aa; --line: #2a2a2e; --accent: #60a5fa; } }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 40px 16px 64px; }
+  h1 { font-size: 28px; margin: 0 0 4px; }
+  h2 { font-size: 19px; margin: 32px 0 8px; }
+  p, li { color: var(--text); }
+  .meta { color: var(--muted); margin: 0 0 24px; }
+  ul { padding-left: 22px; }
+  li { margin: 4px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 15px; }
+  th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+  th { font-weight: 600; }
+  a { color: var(--accent); }
+  code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.92em; }
+  @media (max-width: 560px) { table, thead, tbody, tr, th, td { display: block; } thead { display: none; } td { border: 0; padding: 2px 0; } tr { border-bottom: 1px solid var(--line); padding: 8px 0; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Loginforce for Salesforce: Privacy Policy</h1>
+  <p class="meta">Last updated: 28 September 2026 (rev. 2) · Applies to version 0.7.1 and later</p>
+
+  <p>Loginforce for Salesforce is a browser extension for people who work in many Salesforce orgs. It stores your org logins, logs you in, lets an administrator log in as another user of an org, and colours each org so you can tell them apart. This policy explains what the extension handles, where it keeps it, and what it never does.</p>
+
+  <p><strong>In short:</strong> everything stays in your own browser. The extension has no server, sends nothing to its author or to any third party, and contains no analytics, advertising or tracking. The only network requests it makes go to the Salesforce org you are working in.</p>
+
+  <h2>What the extension stores, and where</h2>
+  <table>
+    <thead><tr><th>Data</th><th>Where it is kept</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr><td>Org list: name you gave each org, username, login address, colour</td><td>Your browser's extension storage on this device</td><td>To show your orgs and log you in</td></tr>
+      <tr><td>Saved Salesforce passwords</td><td>Your browser, encrypted (AES-GCM). The encryption key is itself encrypted with your master password (PBKDF2-SHA256, 600,000 iterations) and is never stored in readable form.</td><td>To fill the Salesforce login page for you</td></tr>
+      <tr><td>Your master password</td><td>Never stored. It is used only to unlock the encrypted key, and the unlocked state ends when the browser closes or after the idle time you choose.</td><td>To protect saved passwords</td></tr>
+      <tr><td>Short-lived session state: which tab is logging in, which user a tab was switched to, login results</td><td>Your browser's session storage, cleared when the browser closes</td><td>To show the right org and user on each tab</td></tr>
+      <tr><td>The last five users you logged in as in each org: their Salesforce user id, username and name</td><td>Your browser's extension storage on this device</td><td>To offer them again in the Log in as panel</td></tr>
+      <tr><td>Display preferences: panel position, login celebration on or off and its messages</td><td>Your browser's extension storage</td><td>To remember your settings</td></tr>
+    </tbody>
+  </table>
+  <p>Nothing is synced to other devices by the extension. Uninstalling the extension deletes all of the above.</p>
+
+  <h2>Salesforce session cookies</h2>
+  <p>The extension reads the Salesforce session cookie of the org open in your current tab. It uses it only to make requests to that same org on your behalf, as described below, and never stores it.</p>
+  <p>When you choose <em>Log in as → Incognito</em>, the extension copies that org's cookies from your normal browser profile into your browser's own incognito session, so the incognito tab can open as the chosen user. The copy stays inside your browser and ends when the incognito window closes. While such a tab is open, the extension blocks Salesforce's logout page in that tab only, so logging out there cannot end your own session in your normal tabs; it closes that tab instead.</p>
+
+  <h2>Network requests</h2>
+  <p>The extension talks only to Salesforce, and only to the org or login page you are working with:</p>
+  <ul>
+    <li>the Salesforce login page, which it opens and fills when you log in;</li>
+    <li>that org's user-information and query endpoints, to show who you are logged in as and to look up the user you want to log in as;</li>
+    <li>Salesforce's own "log in as" page, when you choose to log in as another user.</li>
+  </ul>
+  <p>These requests carry the session of the org you are in, and no cookies of any other site. Nothing is sent to the extension's author or to any other server.</p>
+
+  <h2>Data about other users of your org</h2>
+  <p>When you search for a user to log in as, the extension asks your org for matching users' names, usernames, roles and profiles, which your Salesforce permissions already let you see. Search results are shown in the panel and are not stored. When you log in as a user, that user's id, username and name are kept in the list of your last five for that org, on this device only.</p>
+
+  <h2>Import and export</h2>
+  <p>Importing an ORGanizer backup or an Loginforce export reads the file you choose, on your device. Exporting writes a file you choose to save, encrypted with an export password you set. The extension never uploads either file anywhere.</p>
+
+  <h2>Clipboard</h2>
+  <p>The extension writes to your clipboard only when you click "Copy username" or "Copy password".</p>
+
+  <h2>What the extension never does</h2>
+  <ul>
+    <li>It does not sell, share or transfer your data to anyone.</li>
+    <li>It does not use your data for advertising, profiling or creditworthiness.</li>
+    <li>It does not collect browsing history, and it runs only on Salesforce domains.</li>
+    <li>It does not load or run code from anywhere other than the extension package itself.</li>
+  </ul>
+
+  <h2>Your control</h2>
+  <p>You can edit or remove any saved org and password at any time, lock the extension, turn off the login celebration, and export or delete your data by uninstalling the extension.</p>
+
+  <h2>Changes</h2>
+  <p>If this policy changes, the new version will be published at this address with a new date.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about this policy: <a href="mailto:tymek.milo@gmail.com">tymek.milo@gmail.com</a></p>
+  <p class="meta">Loginforce is an independent tool. It is not affiliated with, sponsored or endorsed by Salesforce, Inc. Salesforce is a trademark of Salesforce, Inc.</p>
+</main>
+</body>
+</html>
